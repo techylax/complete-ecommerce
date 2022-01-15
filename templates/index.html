@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load category_template_tags %}
+{% load slide_template_tags %}
+{% block content %}
+<style>
+	/*[ Block2 ]
+///////////////////////////////////////////////////////////
+*/
+.block2-labelpromotion::before,
+.block2-labelsale::before,
+.block2-labelnew::before 
+{
+  z-index: 100;
+  font-family: Montserrat-Regular;
+  font-size: 12px;
+  color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 22px;
+  border-radius: 11px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.block2-labelsale::before {
+  background-color: white;
+  color: #000;
+  content: 'Sale';
+}
+
+.block2-labelnew::before {
+  background-color: #007bff;
+  content: 'New';
+}
+
+.block2-labelpromotion::before{
+	background-color: #000;
+	content: 'Promotion';
+	width: 70px;
+  }
+
+  .btn-dark {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+}
+
+.btn-outline-dark {
+    color: #000;
+    border-color: #000;
+}
+
+		.hov1{
+			background-color: white !important;
+			color: black !important;
+			
+		}
+		.newproduct{
+			margin-bottom: 2px;
+			padding-bottom: 2px;
+		}
+			.banner2{
+			background-color: #fff;
+			margin-right: 1rem;
+			margin-left: 1rem;
+			margin-bottom: 0 !important;
+			padding-bottom: 0 !important;
+		}
+
+		.ban_img{
+			height: 680px;
+			width: 100%;
+		}
+		.ban5_img{
+			height: 580px;
+			width: 100%;
+		}
+
+		.btn-light {
+			color: #000;
+			background-color: #fff;
+			border-color: #fff;
+			border-radius: 20px;
+		}
+		.wrap-btn-slide1 a:hover{
+			background-color: whitesmoke;
+			color: #000 !important;
+			opacity: 0.7;
+		}
+			.slide1 button:hover{
+		background-color: white !important;
+		color: black;
+	}
+</style>
+	<!-- Slide1 -->
+	<section class="slide1">
+		<div class="wrap-slick1">
+			<div class="slick1">
+				{% slides %}
+			</div>
+		</div>
+	</section>
+
+{% comment %} categories  {% endcomment %}
+	{% comment %} <section class="banner bgwhite p-t-40 p-b-40">
+		<div class="container">
+			<div class="row">
+				{% categories_div %}
+			</div>
+		</div>
+	</section> {% endcomment %}
+
+	<!-- New Product -->
+
+	<section class="newproduct bgwhite p-t-45 p-b-105">
+		<div class="container">
+			<div class="sec-title p-b-60">
+				<h3 class="m-text5 t-center">
+					Featured Products
+				</h3>
+			</div>
+
+			<!-- Slide2 -->
+			<div class="wrap-slick2">
+				<div class="slick2">
+
+					{% for item in object_list %}
+					
+					<div class="item-slick2 p-l-15 p-r-15">
+						<!-- Block2 -->
+						<div class="block2">
+							
+							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-label{{item.get_label_display}}">
+								<a href="{{item.get_absolute_url}}">
+								<img src="{{ item.image.url }}" alt="IMG-PRODUCT" 
+								style=" width:100%; "></a>
+							</div>
+							
+						     	<div class="block2-txt p-t-20">
+								<a href="{{item.get_absolute_url}}" class="block2-name dis-block s-text3 p-b-5" style="color: black;">
+									{{ item.title }}
+								</a>
+
+								{% if item.discount_price %}
+								<span class="block2-oldprice m-text7 p-r-5" style="color: black;">
+									Rs.{{ item.price }}
+								</span>
+
+								<span class="block2-newprice m-text8 p-r-5">
+									Rs.{{ item.discount_price }}
+								</span>
+								{% else %}
+								<span class="block2-price m-text6 p-r-5" style="color: black;">
+									Rs.{{ item.price }}
+								</span>
+								{% endif %}						
+							</div>					
+						</div>
+					</div>			
+					{% endfor %}			
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+<!-- Featured Section starts -->
+<div class="gallery text-center container" >
+	<div class="sec-title">
+				<h3 class="m-text5 t-center">
+					Featured Arts
+				</h3>
+			</div>
+  <div style="font-size: 1.3rem;font-family: 'Dancing Script', cursive;">whats on display</div>
+<div class="container-fluid featured d-md-flex mt-3">
+
+  <div class="featured-image col-sm-4  mt-1"><img src="http://omframehouse.com.np/img/featured/1.jpg" class="w-100"> 
+  
+  </div>    
+
+  <div class="featured-image col-sm-4  mt-1" data-aos="zoom-in-right"><img src="http://omframehouse.com.np/img/featured/1.jpg" class="w-100"> 
+   
+  </div>  
+
+  <div class="featured-image col-sm-4  mt-1" data-aos="zoom-in-right"><img src="http://omframehouse.com.np/img/featured/1.jpg" class="w-100"> 
+    
+  </div>  
+
+</div>
+
+<div class="container featured d-md-flex mt-3 mb-4">
+
+  <div class="featured-image col-sm-4  mt-1" data-aos="zoom-in-left"><img src="http://omframehouse.com.np/img/featured/1.jpg" class="w-100"> 
+    
+  </div>  
+
+  <div class="featured-image col-sm-4  mt-1" data-aos="zoom-in-left"><img src="http://omframehouse.com.np/img/featured/1.jpg" class="w-100"> 
+   
+  </div>  
+
+  <div class="featured-image col-sm-4  mt-1" data-aos="zoom-in-left"><img src="http://omframehouse.com.np/img/featured/1.jpg" class="w-100"> 
+    
+  </div>
+</div>
+<a class="primary-btn text-center mt-5 " href="category/gallery">VIEW GALLERY</a>
+</div>
+<!-- Featured Section ends -->
+
+
+	<section class="banner2 bg5 p-t-55 p-b-55">
+		<div class="">
+			<div class="row">
+				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto p-t-15 p-b-15">
+					<div class="pos-relative">
+						<img src="http://omframehouse.com.np/img/west/1.png" alt="IMG-BANNER" class="ban5_img">
+					</div>
+				</div>
+
+				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto p-t-15 p-b-15">
+					<div class="pos-relative">
+						<img src="http://omframehouse.com.np/img/west/2.png" alt="IMG-BANNER" class="ban5_img">
+					</div>
+				</div>
+
+				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto p-t-15 p-b-15">
+					<div class="pos-relative">
+						<img src="http://omframehouse.com.np/img/west/3.png" alt="IMG-BANNER" class="ban5_img">
+					</div>
+				</div>
+		</div>
+	</section>
+
+
+	<section class="shipping bgwhite p-t-62 p-b-46">
+		<div class="flex-w p-l-15 p-r-15">
+			<div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+				<h4 class="m-text12 t-center">
+					Free Delivery
+				</h4>
+
+				<a href="#" class="s-text11 t-center">
+					Click here for more info
+				</a>
+			</div>
+
+			<div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 bo2 respon2">
+				<h4 class="m-text12 t-center">
+					30 Days Return
+				</h4>
+
+				<span class="s-text11 t-center">
+					Simply return it within 30 days for an exchange.
+				</span>
+			</div>
+
+			<div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+				<h4 class="m-text12 t-center">
+					Store Opening
+				</h4>
+
+				<span class="s-text11 t-center">
+					Shop open from Sunday to Friday
+				</span>
+			</div>
+		</div>
+	</section>
+
+
+
+
+	
+
+	{% endblock content %}
+
+
+	
